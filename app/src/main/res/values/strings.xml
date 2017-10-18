@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Tommy\'s Resume</string>
+    <string name="bio">
+        Hello and welcome to Tommy\'s Resume app. The purpose of this app is to demonstrate my ability to write an Android application.
+        This application was built using Android Studio 2.3.3. The language that this utilizes is Java. It also uses Gradle to build and
+        XML to store important information such as the text of the application, this short bio and colors and styles of the application.
+    </string>
+</resources>
