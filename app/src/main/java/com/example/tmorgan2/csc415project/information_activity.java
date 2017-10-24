@@ -1,6 +1,8 @@
 package com.example.tmorgan2.csc415project;
 
+import android.content.Intent;
 import android.content.res.Resources;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +25,9 @@ public class information_activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if (!PreferenceManager.getDefaultSharedPreferences(this).getBoolean("light_theme_switch", false)) {
+            setTheme(R.style.AppTheme_Dark);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.information_activity);
         setResourceArray();
@@ -117,4 +122,8 @@ public class information_activity extends AppCompatActivity {
 //        image.setImageResource(resArray[currentImage]);
     }
 
+    public void btnSettings_onClick(View view) {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
+    }
 }

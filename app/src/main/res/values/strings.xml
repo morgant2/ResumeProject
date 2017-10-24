@@ -5,4 +5,14 @@
         This application was built using Android Studio 2.3.3. The language that this utilizes is Java. It also uses Gradle to build and
         XML to store important information such as the text of the application, this short bio and colors and styles of the application.
     </string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_theme">Enable light theme</string>
+    <string name="pref_description_theme">Use the light theme for lighter colors</string>
+
 </resources>
