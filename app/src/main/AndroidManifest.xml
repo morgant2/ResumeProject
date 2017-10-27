@@ -24,6 +24,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.tmorgan2.csc415project.information_activity" />
         </activity>
+        <activity
+            android:name=".SkillsActivity"
+            android:label="@string/title_activity_skills"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

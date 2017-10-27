@@ -63,10 +63,16 @@
                 android:onClick="btnSettings_onClick"
                 android:text="Settings"
                 app:layout_constraintRight_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Settings"
-                android:layout_marginTop="72dp"
-                android:layout_marginRight="-113dp" />
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btnSkills"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="btnSkills_onClick"
+                android:text="Skills"
+                app:layout_constraintRight_toLeftOf="@+id/btnSettings"
+                app:layout_constraintTop_toTopOf="parent" />
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 

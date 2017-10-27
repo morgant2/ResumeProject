@@ -126,4 +126,9 @@ public class information_activity extends AppCompatActivity {
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
+
+    public void btnSkills_onClick(View view) {
+        Intent intent = new Intent(this, SkillsActivity.class);
+        startActivity(intent);
+    }
 }
