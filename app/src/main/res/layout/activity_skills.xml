@@ -31,5 +31,13 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:id="@+id/skillFrame"
         ></FrameLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_margin="@dimen/fab_margin"
+        android:id="@+id/fabNewSkill"
+        android:src="@drawable/ic_action_name"/>
 
 </android.support.constraint.ConstraintLayout>

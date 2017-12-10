@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.tmorgan2.csc415project.NewSkillActivity">
+
+    <EditText
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/etSkillName"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:hint="Skill"/>
+    <EditText
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/etSkillDetails"
+        app:layout_constraintTop_toBottomOf="@+id/etSkillName"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:hint="Skill Summary"/>
+    <Button
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnCreateSkill"
+        app:layout_constraintTop_toBottomOf="@+id/etSkillDetails"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="Create Skill"/>
+
+</android.support.constraint.ConstraintLayout>

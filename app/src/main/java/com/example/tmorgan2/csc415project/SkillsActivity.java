@@ -1,22 +1,17 @@
 package com.example.tmorgan2.csc415project;
 
 import android.app.FragmentTransaction;
-import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.widget.ListView;
+import android.view.View;
 
 import com.example.tmorgan2.csc415project.models.Skill;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
 import layout.FragmentSkills;
@@ -26,6 +21,7 @@ import layout.FragmentSkillsDetail;
 public class SkillsActivity extends AppCompatActivity implements FragmentSkills.SkillSelectedListener, FragmentSkillsDetail.SkillDetailListener {
 
     List<Skill> skills;
+    SkillsDB db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +33,10 @@ public class SkillsActivity extends AppCompatActivity implements FragmentSkills.
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ListView rv = (ListView) findViewById(R.id.skillsListView);
-        Gson gson = new Gson();
-        String json = loadGSON(getApplicationContext());
-        Type type = new TypeToken<List<Skill>>(){}.getType();
-        skills = (List<Skill>) gson.fromJson(json, type);
+        db = new SkillsDB(getApplicationContext());
+
+
+        skills = db.getSkills();
 
         if(savedInstanceState != null){
             return;
@@ -50,25 +45,17 @@ public class SkillsActivity extends AppCompatActivity implements FragmentSkills.
         fragSkills.setArguments(getIntent().getExtras());
 
         getFragmentManager().beginTransaction().add(R.id.skillFrame, fragSkills).commit();
-    }
 
-    private String loadGSON(Context context){
-        String json = null;
+        FloatingActionButton fabNewSkill = (FloatingActionButton) findViewById(R.id.fabNewSkill);
+        fabNewSkill.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SkillsActivity.this, NewSkillActivity.class);
+                startActivity(intent);
+            }
+        });
 
-        try
-        {
-            InputStream is = context.getAssets().open("skills.json");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
 
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-
-        return json;
     }
 
     @Override
@@ -79,25 +66,22 @@ public class SkillsActivity extends AppCompatActivity implements FragmentSkills.
             detailFrag.resetSkillDetailView(skills.get(pos).getSkillDetails());
         } else {
             FragmentSkillsDetail newFragment = new FragmentSkillsDetail();
-
             Bundle args = new Bundle();
 
-            args.putString(FragmentSkillsDetail.ARG_PARAM1, skills.get(pos).getSkillDetails());
-
+            args.putString(FragmentSkillsDetail.SKILL_DETAILS, skills.get(pos).getSkillDetails());
+            args.putInt(FragmentSkillsDetail.SKILL_ID, skills.get(pos).get_id());
             newFragment.setArguments(args);
 
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
-
             transaction.replace(R.id.skillFrame, newFragment);
             transaction.addToBackStack(null);
-
-
             transaction.commit();
         }
     }
 
     @Override
     public void onFragmentInteraction(Uri uri) {
+        int test = 0;
 
     }
 }

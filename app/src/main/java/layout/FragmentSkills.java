@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.tmorgan2.csc415project.R;
+import com.example.tmorgan2.csc415project.SkillsDB;
 import com.example.tmorgan2.csc415project.models.Skill;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -45,10 +46,9 @@ public class FragmentSkills extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_skills, container, false);
 
-        Gson gson = new Gson();
-        String jsonOutput = loadGSON(getContext());
-        Type listType = new TypeToken<List<Skill>>(){}.getType();
-        List<Skill> skills = (List<Skill>) gson.fromJson(jsonOutput, listType);
+        SkillsDB db = new SkillsDB(this.getContext());
+
+        List<Skill> skills = db.getSkills();
 
         ArrayAdapter adapter =new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, skills);
 
@@ -91,22 +91,4 @@ public class FragmentSkills extends Fragment {
         void onSkillSelected(int pos);
     }
 
-    private String loadGSON(Context context){
-        String json = null;
-
-        try
-        {
-            InputStream is = context.getAssets().open("skills.json");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
-
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-
-        return json;
-    }
 }

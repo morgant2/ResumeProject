@@ -2,13 +2,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="layout.FragmentSkillsDetail"
     android:id="@+id/fragment_skills_detail">
 
-    <TextView
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Skill details fragment"
-        android:id="@+id/skillDetailText"/>
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="368dp"
+            android:layout_height="wrap_content"
+            android:text="Skill details fragment"
+            android:id="@+id/skillDetailText"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"/>
 
+        <Button
+            android:layout_width="368dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnEditSkill"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/skillDetailText"
+            android:text="Edit Skill"/>
+        <Button
+            android:layout_width="368dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnDeleteSkill"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnEditSkill"
+            android:text="Delete Skill"/>
+
+
+    </android.support.constraint.ConstraintLayout>
 </FrameLayout>

@@ -14,6 +14,19 @@ public class Skill  {
     private String skill;
     private String skillDetails;
 
+    public int get_id() {
+        return _id;
+    }
+
+    private int _id;
+
+    public Skill(int id, String skill, String skillDetails)
+    {
+        this._id = id;
+        this.skill = skill;
+        this.skillDetails = skillDetails;
+    }
+
     public String getSkill() {
         return skill;
     }
